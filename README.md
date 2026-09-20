@@ -101,21 +101,8 @@ A good first exercise is to watch how the `q - q_hat` error scope responds as th
 - Flat-earth position propagation
 - Obstacle handling is a simple threshold rule rather than a path planner
 
-## Known issues
-
-These were spotted while reading the code and are worth fixing before relying on results.
-
-- In the Guidance Command function, the distance to the obstacle is assigned to `d` (overwriting the distance to target) but later read as `d_obs`, which is never defined.
-- `FPA_CMD = atan(dh=d);` should be `atan(dh/d)`.
-- Earth radius is `6.371e3` in the Guidance Command function (kilometres) while `model.m` uses `6371e3` (metres), and the 2 km threshold is written as `2000`. The units need to agree.
-- The obstacle haversine term uses `cos(l2)` (target latitude) where the obstacle latitude `l3` is expected.
-- A leftover template line, `y = u;`, remains at the end of the function.
-- In `model.m`, `R` is first the LQR control weight and is later reassigned as the Earth radius. The script still works because `lqr` runs first, but separate names would be safer.
-- The second state is labelled `'a'` in `model.m`. The outputs suggest it represents pitch rate `q`.
-
 ## Roadmap
 
-- FlightGear visualization. The project description mentions software-in-the-loop testing with FlightGear, but the current `.slx` does not yet contain the FlightGear interface blocks. Adding the Aerospace Blockset FlightGear Preconfigured 6DoF Animation block, fed by the LLA and attitude signals, would complete this.
 - Result plots and screenshots in this README
 - A scripted run that logs signals and generates plots automatically
 
