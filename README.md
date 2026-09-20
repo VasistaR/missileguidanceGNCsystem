@@ -4,8 +4,6 @@ A guidance, navigation, and control (GNC) simulation built in MATLAB and Simulin
 
 This is an educational controls project. Everything here is simulation: a two-state linear model, constant speed, and planar kinematics. It is intended for learning and demonstrating state-space design, optimal control, and state estimation.
 
-More about this and related work: [vasistar.github.io/projects](https://vasistar.github.io/projects/)
-
 ## What it demonstrates
 
 - State-space modelling of short-period pitch dynamics (angle of attack and pitch rate, with normal acceleration `Az` and pitch rate `q` as outputs)
